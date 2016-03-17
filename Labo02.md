@@ -1,6 +1,6 @@
 # LAB 02: APP SCALING ON AMAZON WEB SERVICES
 
-![img](img/title_img.png "logo")
+![img](img/title_img.PNG "logo")
 
 Link to the full lab [here](https://cyberlearn.hes-so.ch/mod/assign/view.php?id=551613)  
 
@@ -42,9 +42,9 @@ $databases['default']['default'] = array(
 ####  DELIVERABLE 3:
 Screenshot of the AWS console showing the AMI parameters:  
 
-![img](img/labo02_task3.png "AMI")
+![img](img/labo02_task3.PNG "AMI")
 
-![img](img/labo02_task3bis.png "AMI details")
+![img](img/labo02_task3bis.PNG "AMI details")
 
 ## TASK 4: CREATE A LOAD BALANCER
 ####  DELIVERABLE 4:
@@ -76,7 +76,7 @@ health check :
 ## TASK 5: LAUNCH A SECOND INSTANCE FROM THE CUSTOM IMAGE
 ####  DELIVERABLE 5:
 
-![img](img/labo02_task4.png "infra")
+![img](img/labo02_task4.PNG "infra")
 
 Total cost of the setup :  
 + $59.25
