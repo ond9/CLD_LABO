@@ -1,6 +1,6 @@
 # LAB 02: APP SCALING ON AMAZON WEB SERVICES
 
-![img](img/title_img.PNG "logo")
+![img](img/title_img.png "logo")
 
 Link to the full lab [here](https://cyberlearn.hes-so.ch/mod/assign/view.php?id=551613)  
 
