@@ -78,6 +78,7 @@ health check :
 
 Diagram of our setup on AWS :
 
+
 ![img](img/labo02_task4.PNG "infra")
 
 corresponding Security-Group :
@@ -96,9 +97,32 @@ That include ELB, RDS(t2.micro) and 2 instance (t2.micro).
 
 Document your observations. Include screenshots of JMeter and the AWS console monitoring output.
 
+We simply configured JMeter to make a GET request on default test front page.
+The test plan is 100 threads that make get request until we stop the test.
 
+![img](img/labo02_task6_jmeter.PNG "monitoring")
+
+Here is the output after the stop of the test. We can see ~30'000 request were send. ~40% fail we get 5XX status
+
+![img](img/labo02_task6_jmeter2.PNG "monitoring")
+
+We can see the network load is increasing when I start the JMeter test on both EC2 instance. The requests switch between instances (round robin). Here is différents monitoring info on the two EC2 instances :
+
+![img](img/labo02_task6_netIN.PNG "monitoring")
+
+![img](img/labo02_task6_netOUT.PNG "monitoring")
+
+![img](img/labo02_task6_PacketINcount.PNG "monitoring")
+
+![img](img/labo02_task6_PacketOUTcount.PNG "monitoring")
+
+![img](img/labo02_task6_cpu.PNG "monitoring")
+
+I have nothings particular to say, just we saw the traffic is shared between the instances. That because the when we request for Zundler-Drupal-1068779716.eu-central-1.elb.amazonaws.com/drupal7/ the DNS return us two IP that are all time switched between request and our browser select the first one.
 
 When you resolve the DNS name of the load balancer into IP addresses while the load balancer is under high load what do you see? Explain.
+
+It change nothing, no matter the Load Balancer is under heavy load or not. That's because the DNS return us the two IP of EC2 instance with round robin switch and our browser just select the first one so we switch between two instance.
 
 The Nslookup comamnd show that ip address switch between each command and this what ever the load is.
 
@@ -123,3 +147,7 @@ Addresses:  52.29.147.251
 ```
 
 Did this test really test the load balancing mechanism? What are the limitations of this simple test? What would be necessary to do realistic testing?
+
+No ! Actually it just test the round robin mechanism made by the DNS :) . That's because we have only one instance by Availability zone and one IP of ELB corresponding to one availability zone. So if we really want to test the load balancer we have to  run at least two instances by availability zone, because of two IPs returned by the DNS each one corresponding in one availability zone of the load balancer and we have one instance of EC2 for each availability zone. It's like we have one to one matching IP1_ELB -> IP1_EC2 / IP2_ELB -> IP2_EC2.
+
+**Other note:** The RDS seem to limit the number of request, on 30K request we get ~ 40% of 5XX response.
