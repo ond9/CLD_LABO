@@ -19,7 +19,7 @@ zundler-drupa.cgcjxeuocv6f.eu-central-1.rds.amazonaws.com
 
 In a two-tier architecture the web application and the database are kept separate and run on different hosts. Imagine that for the second tier instead of using RDS to store the data you would create a virtual machine in EC2 and install and run yourself a database on it. If you were the Head of IT of a medium-size business, how would you argue in favor of using a database as a service instead of running your own database on an EC2 instance? How would you argue against it?
 
-Faut répondre à ça !
+Faut répondre à ça laurent ! ![laurent-part](http://thewordchef.com/wp-content/uploads/2012/01/red-arrow.png "logo")
 
 ## TASK 2: CONFIGURE THE DRUPAL MASTER INSTANCE TO USE THE RDS DATABASE
 ####  DELIVERABLE 2:
