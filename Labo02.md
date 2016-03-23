@@ -85,7 +85,7 @@ corresponding Security-Group :
 
 ![img](img/labo02_task4_bis.PNG "Security-Group")
 
-Note: Security-Group are permissive, we can filter more precisely but for this lab we just made simple filtering to the objective that everything works. Note that icmp is required if you want that the ELB can check status of the instances.
+**Note:** Security-Group are permissive, we can filter more precisely but for this lab we just made simple filtering to the objective that everything works. Note that icmp is required if you want that the ELB can check status of the instances.
 
 Total cost of the setup :  
 + $59.25
