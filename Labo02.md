@@ -2,7 +2,10 @@
 
 ![img](img/title_img.png "logo")
 
-Link to the full lab [here](https://cyberlearn.hes-so.ch/mod/assign/view.php?id=551613)  
+Link to the full lab [here](https://cyberlearn.hes-so.ch/mod/assign/view.php?id=551613)
+
+**Assignment from:** Laurent girod & Cyrill Zundler
+
 
 ## TASK 1: CREATE A DATABASE USING THE RELATIONAL DATABASE SERVICE (RDS)
 #### DELIVERABLE 1:
@@ -114,7 +117,7 @@ The test plan was prepared on JMeter. It consist of 100 threads making ``GET`` r
 
 ![img](img/labo02_task6_jmeter.PNG "monitoring")
 
-Here is the output after the test was stopped. We observe that about 30000 request were send. About 40% of them failed and got a 5xx status.
+Here is the output after the test was stopped. We observe that about 30000 request were send. About 43% of them failed and got a 5xx status.
 
 ![img](img/labo02_task6_jmeter2.PNG "monitoring")
 
@@ -164,4 +167,17 @@ No, it just tests the round robin mechanism made by the DNS. That, because the t
 
 To test the load balancer, it would be necessary to run at least two instances by availability zone. Since there is only one instance of EC2 for each availability zone, the task of the load balancer is rather monotonous, it essentially do a one to one matching IP1_ELB -> IP1_EC2 / IP2_ELB -> IP2_EC2. With more EC2 instances on the same availability zone, the load-balancer will works proberly by redirecting the traffic between instances (in the same availability zone).
 
-**Other note:** The RDS seem to limit the number of request, on about 30K requests we get about 40% of 5XX responses.
+**Other note:** The RDS seem to limit the number of request, on about 30K requests we get about 43% of 5XX responses. We have no explanation for it.
+
+30047 request were send with JMeter (5731 + 4288 +5796 +4869 + 5777 + 3586) :
+
+![img](img/labo02_task7_3.PNG "Request Sum")
+
+Here is 2XX status response :
+
+![img](img/labo02_task7_2.PNG "HTTP 2XX repsonse")
+
+Here is 5XX status response :
+![img](img/labo02_task7_1.PNG "HTTP 5XX response")
+
+These graphics are from the ELB monitoring page.
