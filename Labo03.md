@@ -157,7 +157,12 @@ Here is the jmetter configuration for test :
 
 ##### What response times do you observe in the test tool for each Servlet?
 
++ ~11K ms for the default servlets.
++ ~14k ms for the Datastorewrite servlets. (normal he must store the result and call some API function for that)
+
 ##### Compare the response times shown by the test tool and the App Engine console. Explain the difference.
+
+It's normal we aren't in the same place for the tools it's the latency of the server (Web App), the time that the server receive, compute request end send the result to us. For the server it's the time when he send the response to our web browser and then receive back an ack that we have receive the response. So that why the latency is bigger for the tools than the "google app engine".
 
 ##### How much resources have you used running these tests? From the Quota Details view of the console determine the non-zero resource quotas (Daily quota different from 0%). Explain each with a sentence. To get a sense of everything that is measured click on Show resources not in use.  
 
