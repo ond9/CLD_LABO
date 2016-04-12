@@ -93,10 +93,85 @@ public class DatastoreWriteServlet extends HttpServlet {
 ***Note:*** I put all in the same file entity, business logic, it's just for the assignment purpose... (if M. Liechti saw that...)
 
 here is Local Datastore :  
+
 ![img](img/labo03_datastoreLocal.PNG "datastore")  
 
 Here is Google Datastore:  
+
 ![img](img/labo03_datastoreOnline.PNG "datastore")
 
 ## TASK 3: TEST THE PERFORMANCE OF DATASTORE WRITES
 ####  DELIVERABLE 3:
+
+***Default Servlet :***  
+Here is the jmetter configuration for test :
+
++ Thread Group -> number of thread : 2000  
++ Thread Group -> loop count : 1  
++ HTTP Request -> Server name or IP : 1-dot-heigvd-cld-yourlastname.appspot.com
++ HTTP Request -> Path : /labo03
+
+(I fail the name during creation yourlastname should have been zundler... sry for that)
+
+
+![img](img/labo03_task3_jmetter_graph1.PNG)
+
+![img](img/labo03_task3_jmetter_sumary1.PNG)
+
+![img](img/labo03_task3_load.PNG)
+
+![img](img/labo03_task3_sumary.PNG)
+
+![img](img/labo03_task3_traffic.PNG)
+
+![img](img/labo03_task3_request_type.PNG)
+
+![img](img/labo03_task3_latency.PNG)
+
+![img](img/labo03_task3_cpu.PNG)  
+
+***DatastoreWrite Servlet :***
+Here is the jmetter configuration for test :
+
++ Thread Group -> number of thread : 2000  
++ Thread Group -> loop count : 1  
++ HTTP Request -> Server name or IP : 1-dot-heigvd-cld-yourlastname.appspot.com
++ HTTP Request -> Path : /datastorewrite?\_kind=book&author=John%20Steinbeck&title=The%20Grapes%20of%20Wrath
+
+![img](img/labo03_task3_jmetter_graph2.PNG)  
+
+![img](img/labo03_task3_jmetter_sumary2.PNG)  
+
+![img](img/labo03_task3_load2.PNG)
+
+![img](img/labo03_task3_sumary2.PNG)
+
+![img](img/labo03_task3_traffic2.PNG)
+
+![img](img/labo03_task3_request_type2.PNG)
+
+![img](img/labo03_task3_latency2.PNG)
+
+![img](img/labo03_task3_cpu2.PNG)  
+
+
+##### What response times do you observe in the test tool for each Servlet?
+
+##### Compare the response times shown by the test tool and the App Engine console. Explain the difference.
+
+##### How much resources have you used running these tests? From the Quota Details view of the console determine the non-zero resource quotas (Daily quota different from 0%). Explain each with a sentence. To get a sense of everything that is measured click on Show resources not in use.  
+
+![img](img/labo03_task3_quotas.PNG)  
+
++ Requests : number of request our Web App
++ Outgoing Bandwidth : 	nothing to say, Outgoing traffic BW (quotas : 1GB/24 hours)
++ Incoming Bandwidth : nothing to say, Outgoing traffic BW (quotas : 1GB/24 hours)
++ Frontend Instance Hours : number of instance of frontend deployed to handle traffic (quotas 28 instances/hours)
++ Datastore Write Operations : write operations to the datastore (quotas : 0.05 Million Ops/24 hours)
++ Datastore Read Operations : read operations to the datastore (quotas : 0.05 Million Ops/24 hours)
+
++ Code and Static File Storage : the size of our code project (size out our sources)
+
+##### Let's suppose you become suspicious that the automatic scaling of instances is not working correctly. How would you use the App Engine console to verify? Give an example of how the automatic scaling could fail. Which measures shown in the console would you use to detect this failure?
+
+We just can send tons of request on our Web App, then check on the Google console that instances number increase, we can check latency too  if scaling of instance fail, latency will increase when we send tens of thousands of request, and instance number wouldn't increase properly.
