@@ -11,7 +11,7 @@ Link to the full lab [here](https://cyberlearn.hes-so.ch/mod/assign/view.php?id=
 #### DELIVERABLE 1:
 
 .java file :
-These files contains the code of the project, this includes servlets, business logic, Data entity, Storage service, etc...
+These files contains the code of the project, this includes servlets, business logic, Data entity, Storage service (JDBC, JPA, etc. if we use this kind of BDD), etc...
 
 web.xml :
 Determine how URLs maps to servlets, which URLs require authentication, and other routing informations.
@@ -190,9 +190,8 @@ dramatically. If no scale up occur, its increase rate should not change.
 
 If the datacenter in which the application is running is overloaded, it might
 not be possible to run more instances. An other reason the automatic scaling
-might fail is if there are no remaining credit.
+might fail is if there are no remaining credit or if you reach quotas, another possibilities is that if you check the instances number decrease slowly even is no more traffic.
 
 It should also be noticeable with the latency of the application to proceed a
 request. If the scaling up does not work properly, the time taken by the
-application to responds should significantly increase.
-
+application to responds should significantly increase. You can also check our quotas under resources uses to check if you reach limits.
