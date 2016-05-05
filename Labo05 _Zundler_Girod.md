@@ -37,16 +37,17 @@ Since I can't see anymore how many instances was running when the status is term
 
 ![cost](img/labo05_task1_5.png "cost")
 
-The cluster was running during 10 min.
+The cluster was running during 10 min. But it counts as one hour.
 
-Estimated price : 10/60 \* 0.266 \* 3 instances + 10/60 \* 0.070. = ~0.144$
+Estimated price : 0.266 \* 3 instances + 0.070. = ~0.868$
 
 
 **From the Hadoop statistics in the syslog log file determine**
 
-+ how many input key-value pairs all the mappers did process
++ Number of input key-value pairs processed by the mappers : 2831380
++ Number of input key-value pairs processed by the reducers: 2821078
 
-+ how many input key-value pairs all the reducers did process
+
 
 ## TASK 2: WRITING A MAPREDUCE PROGRAM
 #### DELIVERABLES 2:
