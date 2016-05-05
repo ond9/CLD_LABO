@@ -31,7 +31,9 @@ Step 2: Hardware
 + Core: EC2 instance type: m3.xlarge, Count: 2
 + Task: Count: 0
 
-Since I can't see anymore how many instances was running when the status is terminated, I'm based to the hardware config. So 3 instances were created.
+Because it is not possible to see the number of instances which were running,
+when their status is terminated, We based our observation on the hardware
+configuration. Therefore 3 instances were created.
 
 **How much Amazon charges for this job ?**
 
@@ -40,7 +42,6 @@ Since I can't see anymore how many instances was running when the status is term
 The cluster was running during 10 min. But it counts as one hour.
 
 Estimated price : 0.266 \* 3 instances + 0.070. = ~0.868$
-
 
 **From the Hadoop statistics in the syslog log file determine**
 
@@ -106,25 +107,23 @@ if last_key:
 
 ![count_temp](img/labo05_task2_1.png "count temp")
 
-**Important note :** I added the +0 and -0 for simplification, just note is due to lab instructions : "To simplify things you don't need to convert the temperatures to floats or integers. It is OK to just truncate the string. The string +000 represents values between 0 and 0.9 degrees, the string -000 values between -0.9 and 0.".  
+**Important note :** A distinction should have been made for temperature between 0 and 1 and -1 and 0 to avoid the large peak at 0. This was not done to conform the lab instructions : "To simplify things you don't need to convert the temperatures to floats or integers. It is OK to just truncate the string. The string +000 represents values between 0 and 0.9 degrees, the string -000 values between -0.9 and 0.".  
 
-According to me, we can modify the Reducer script to :
+To improve the quality of the approximation, it would have been possible to modify the Reducer script to :
 
 ```python
 from math import floor
 #...
 else:
-  (last_key, valTmp) = (key, floor(val+0.5)) # use of floor instead of int
+  (last_key, valTmp) = (key, floor(val+0.5)) # use of math.floor() instead of int()
   somme_temp += valTmp
 #...
 ```
 
-We probably get better result.
-
 **Questions :**
 
-+ The temperature 22 degrees celsius occur 56530 time.
++ The temperature 22 degrees Celsius occur 56530 time.
 
-+ The lowest and highest temperature occuring are +38 with 2 occurrences and -25 with 5 occurrences.
++ The lowest and highest temperature occurring are +38 with 2 occurrences and -25 with 5 occurrences.
 
 + The temperature 0 occurs most often but is due to -0.9 to +0.9 are converted to 0 so it is biased.
