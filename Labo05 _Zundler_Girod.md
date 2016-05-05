@@ -48,7 +48,7 @@ Estimated price : 0.266 \* 3 instances + 0.070. = ~0.868$
 + Number of input key-value pairs processed by the mappers : 2831380
 + Number of input key-value pairs processed by the reducers: 2821078
 
-The reducer process lower key-value pairs because of the quality indicator inside the mapper that filter some value.
+The number of input pairs for the reducer is smaller because some values are filtered out by the mappers (values of "+999" or based their quality indicator).
 
 ## TASK 2: WRITING A MAPREDUCE PROGRAM
 #### DELIVERABLES 2:
